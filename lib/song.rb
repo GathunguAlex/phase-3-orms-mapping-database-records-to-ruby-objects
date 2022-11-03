@@ -8,6 +8,7 @@ class Song
     @album = album
   end
 
+  #creates a drop table
   def self.drop_table
     sql = <<-SQL
       DROP TABLE IF EXISTS songs
@@ -16,6 +17,8 @@ class Song
     DB[:conn].execute(sql)
   end
 
+
+  #creates the songs table in the database
   def self.create_table
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS songs (
@@ -28,6 +31,10 @@ class Song
     DB[:conn].execute(sql)
   end
 
+   #saves an instance of the Song class to the database
+    #assigns the id of the song from the database to the instance
+    #returns the new object that it instantiated
+  
   def save
     sql = <<-SQL
       INSERT INTO songs (name, album)
